@@ -1,8 +1,7 @@
-import {INCREMENT, DECREMENT, ADD_FIVE, SUBTRACT_FIVE, STORE_RESULT, DELETE_RESULT} from './ActionTypes';
+import {INCREMENT, DECREMENT, ADD_FIVE, SUBTRACT_FIVE} from '../ActionTypes';
 
 const initialState = {
-   counter: 0,
-   results: []
+   counter: 0
 }
 
 const reducer = (state = initialState, action) => {
@@ -15,10 +14,6 @@ const reducer = (state = initialState, action) => {
          return { ...state, counter: state.counter + action.amount }
       case SUBTRACT_FIVE:
          return { ...state, counter: state.counter - action.amount }
-      case STORE_RESULT:
-         return { ...state, results: [...state.results, {id: Date(), value: state.counter}] }
-      case DELETE_RESULT:
-        return { ...state, results: state.results.filter(x => x.id !== action.id) }
       default:
          return state
    }
