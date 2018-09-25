@@ -1,4 +1,5 @@
-import {STORE_RESULT, DELETE_RESULT} from '../actions/actions';
+import {STORE_RESULT, DELETE_RESULT} from '../actions/actionTypes';
+import { updateObject } from '../utility';
 
 const initialState = {
    results: []
@@ -7,11 +8,11 @@ const initialState = {
 const reducer = (state = initialState, action) => {
    switch (action.type) {
       case STORE_RESULT:
-         return { ...state, results: [...state.results, {id: Date(), value: action.result}] }
+        return updateObject(state, { results: [...state.results, {id: Date(), value: action.result}] });
       case DELETE_RESULT:
-        return { ...state, results: state.results.filter(x => x.id !== action.id) }
+        return updateObject(state, { results: state.results.filter(x => x.id !== action.id) });
       default:
-         return state
+        return state
    }
 }
 

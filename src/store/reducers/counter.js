@@ -1,4 +1,5 @@
-import {INCREMENT, DECREMENT, ADD_FIVE, SUBTRACT_FIVE} from '../actions/actions';
+import {INCREMENT, DECREMENT, ADD_FIVE, SUBTRACT_FIVE} from '../actions/actionTypes';
+import { updateObject } from '../utility';
 
 const initialState = {
    counter: 0
@@ -7,13 +8,13 @@ const initialState = {
 const reducer = (state = initialState, action) => {
    switch (action.type) {
       case INCREMENT:
-        return { ...state, counter: state.counter + 1 }
+        return updateObject(state, { counter: state.counter + 1 });
       case DECREMENT:
-         return { ...state, counter: state.counter - 1 }
+        return updateObject(state, { counter: state.counter - 1 });
       case ADD_FIVE:
-         return { ...state, counter: state.counter + action.amount }
+        return updateObject(state, { counter: state.counter + action.amount});
       case SUBTRACT_FIVE:
-         return { ...state, counter: state.counter - action.amount }
+         return updateObject(state, { counter: state.counter - action.amount });
       default:
          return state
    }
