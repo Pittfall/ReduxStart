@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import {INCREMENT, DECREMENT, ADD_FIVE, SUBTRACT_FIVE, STORE_RESULT, DELETE_RESULT} from '../../store/ActionTypes';
+import { increment, decrement, add_five, subtract_five, store_results, delete_results } from '../../store/actions/actions';
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 
@@ -39,12 +39,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIncrementCounter: () => dispatch({type: INCREMENT}),
-        onDecrementCounter: () => dispatch({type: DECREMENT}),
-        onAddFiveCounter: () => dispatch({type: ADD_FIVE, amount: 5}),
-        onSubtractFiveCounter: () => dispatch({type: SUBTRACT_FIVE, amount: 5}),
-        onStoreResult: (result) => dispatch({type: STORE_RESULT, result: result}),
-        onDeleteResult: (idToDelete) => dispatch({type: DELETE_RESULT, id: idToDelete})
+        onIncrementCounter: () => dispatch(increment()),
+        onDecrementCounter: () => dispatch(decrement()),
+        onAddFiveCounter: () => dispatch(add_five(5)),
+        onSubtractFiveCounter: () => dispatch(subtract_five(5)),
+        onStoreResult: (result) => dispatch(store_results(result)),
+        onDeleteResult: (idToDelete) => dispatch(delete_results(idToDelete))
     };
 }
 
